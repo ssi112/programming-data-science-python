@@ -24,7 +24,7 @@ Include:
 * A set of slides with a question, visualization, and small summary on each slide
 * A text file with your queries needed to answer each of the four questions
 
-Sakila Entity Relation Diagram
+**Sakila Entity Relation Diagram**
 ![Sakila ERD](projects/1_investigate_rdb/sakila_erd.png)
 
 
