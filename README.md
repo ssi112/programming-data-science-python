@@ -22,7 +22,10 @@ Use SQL to explore the Sakila database related to movie rentals. As part of the 
 Include:
 
 * A set of slides with a question, visualization, and small summary on each slide
-* A text file with your queries needed to answer each of the four questions
+    * Four slides - one question per slide
+    * One to two sentences to answer the question
+    * Indicate the code used to generate the answer 
+    * A text file with your queries needed to answer each of the four questions
 
 **[Project Rubric](https://review.udacity.com/#!/rubrics/2095/view)**
 

@@ -89,9 +89,9 @@ SELECT title, g.name, film_cat, rental_duration,
 FROM film_groups g
 ORDER BY 4, 2;
 
+
 /* =====================================================================
    Additional query provided by mentor Bravo A.
-
    PRECENTILE_CONT
    Ref: https://www.postgresql.org/docs/current/functions-aggregate.html
    =====================================================================
@@ -108,8 +108,8 @@ WITH rdur_pctiles AS (
 ),
 approved_category AS (
    SELECT c.name
-  FROM category AS c
-  WHERE name IN ('Animation','Children','Classics','Comedy','Family','Music')
+   FROM category AS c
+   WHERE name IN ('Animation','Children','Classics','Comedy','Family','Music')
 )
 SELECT f.title AS film_title,c.name AS categ_name, rental_duration,
       CASE
@@ -135,7 +135,6 @@ Question 3
 Provide a table with the family-friendly film category, each of the
 quartiles, and the corresponding count of movies within each combination
 of film category for each corresponding rental duration category.
-
 The resulting table should have three columns:
     Category
     Rental length category
@@ -155,5 +154,4 @@ WITH film_quart AS
 SELECT name, quartiles, COUNT(quartiles)
 FROM film_quart
 GROUP BY 1, 2
-ORDER BY 1, 2
-
+ORDER BY 1, 2;

@@ -67,8 +67,6 @@ GROUP BY 1
 ORDER BY 3 DESC, 2 DESC, 1;
 
 
--- https://www.freecodecamp.org/news/project-1-analyzing-dvd-rentals-with-sql-fd12dd674a64/
-
 /* ---------------------------------------------------------------------
 Additional Questions
 
@@ -104,7 +102,8 @@ ORDER BY 2 DESC;
 /* ---------------------------------------------------------------------
 Additional Questions
 
-4c) Which customers are the most delinquent returning movies?
+4c) Who are the top 10 customers being the most delinquent
+    returning movies?
 
 Include the following columns:
   customer last name,
@@ -142,7 +141,8 @@ SELECT last_name, first_name,
 FROM t2
 WHERE returned_late != 0
 GROUP BY 1, 2
-ORDER BY 3 DESC, 1, 2;
+ORDER BY 3 DESC, 1, 2
+LIMIT 10;
 
 
 /* ---------------------------------------------------------------------
