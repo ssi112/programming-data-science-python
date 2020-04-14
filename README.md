@@ -15,39 +15,21 @@ As the data already contains primary and foreign key entries, as opposed to havi
  5. orders
  
  &#9745; Note on SQL code in \sql folder. Only code for the final two lessons is included: window functions and advanced joins and performance.
- 
+
+--- 
 ### Project 1
-Use SQL to explore the Sakila database related to movie rentals. As part of the project submission, you will run SQL queries and build visualizations to showcase the output of your queries in a presentation. 
 
-Include:
+Use SQL to explore the Sakila database related to movie rentals. As part of the project submission, write and run SQL queries and build visualizations to showcase the output of your queries in a presentation. 
 
-* A set of slides with a question, visualization, and small summary on each slide
-    * Four slides - one question per slide
-    * One to two sentences to answer the question
-    * Indicate the code used to generate the answer 
-    * A text file with your queries needed to answer each of the four questions
+Check the project #1 readme [here](projects/project1.md).
 
-**[Project Rubric](https://review.udacity.com/#!/rubrics/2095/view)**
+---
+### Project 2
 
-**Sakila Database Tables**
+Use Python to explore data related to bike share systems for three major cities in the United States—Chicago, New York City, and Washington. You will write code to import the data and answer interesting questions about it by computing descriptive statistics. You will also write a script that takes in raw input to create an interactive experience in the terminal to present these statistics. 
 
-* actor - contains actors data including first name and last name
-* film -contains films data such as title, release year, length, rating, etc.
-* film_actor - contains the relationships between films and actors
-* category - contains film’s categories data
-* film_category - containing the relationships between films and categories
-* store - contains the store data including manager staff and address
-* inventory - stores inventory data
-* rental  - stores rental data
-* payment - stores customer’s payments
-* staff - stores staff data
-* customer - stores customer’s data
-* address  - stores address data for staff and customers
-* city - stores the city names
-* country - stores the country names
+Check the project #2 readme [here](projects/project2.md).
 
-**Sakila Entity Relation Diagram**
-![Sakila ERD](projects/1_investigate_rdb/sakila_erd.png)
-
-
+---
+### Project 3
 
