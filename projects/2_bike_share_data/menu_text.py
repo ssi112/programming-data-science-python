@@ -43,18 +43,23 @@ def get_menu_item(menu):
         if selection.isupper():
             selection = selection.lower()
         if selection in options:
-            print(menu[selection])
+            #print(menu[selection])
             break
         else:
             print( "Unknown Option Selected!" )
     return selection
 
-option_selected = get_menu_item(city_menu)
-print('\n City: ', city_menu[option_selected])
 
-option_selected = get_menu_item(month_menu)
-print('\n Month: ', month_menu[option_selected])
+def main():
+    city_selected = get_menu_item(city_menu)
+    print('\n Selected Selected City: ', city_menu[city_selected])
 
-option_selected = get_menu_item(weekday_menu)
-print('\n Weekday: ', weekday_menu[option_selected])
+    month_selected = get_menu_item(month_menu)
+    print('\n Selected Month: ', month_menu[month_selected])
+    print("month", month_selected)
 
+    day_selected = get_menu_item(weekday_menu)
+    print('\n Selected Weekday: ', weekday_menu[day_selected])
+
+if __name__ == "__main__":
+    main()

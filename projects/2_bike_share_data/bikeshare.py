@@ -7,7 +7,7 @@ CITY_DATA = { 'chicago': 'chicago.csv',
               'washington': 'washington.csv' }
 
 city_menu = { '1': 'Chicago',
-              '2': 'New York',
+              '2': 'New York City',
               '3': 'Washington',
               'x': 'Exit'}
 
@@ -75,7 +75,7 @@ def get_filters():
     print('\nPlease select the day of the week:\n')
     day = get_menu_item(weekday_menu)
 
-    print('-'*40)
+    print('-'*75)
     return city_menu[city].lower(), month, weekday_menu[day]
 
 
@@ -90,8 +90,34 @@ def load_data(city, month, day):
     Returns:
         df - Pandas DataFrame containing city data filtered by month and day
     """
+    df = pd.read_csv(CITY_DATA[city])
+    print('\nORIGINAL')
+    print(df.head(5))
 
+    # convert the Start Time column to datetime
+    df['Start Time'] = pd.to_datetime(df['Start Time'])
 
+    # extract month and day of week from Start Time to create new columns
+    df['month'] = df['Start Time'].dt.month
+    df['day_of_month'] = df['Start Time'].dt.day
+    # =========================================================
+    #  Using dt.weekday_name is deprecated since pandas 0.23.0
+    #  instead use dt.day_name():
+    # =========================================================
+    df['day_of_week'] = df['Start Time'].dt.day_name()
+
+    # filter by month if applicable
+    if month != '0': # 0 = all
+        # otherwise month comes in as a numeric string
+        df = df[df['month'] == int(month)]
+
+    # filter by day of week if applicable
+    if day.lower() != 'all':
+        # filter by day of week to create the new dataframe
+        df = df[df['day_of_week'] == day.title()]
+
+    print('\nCONVERTED Start Time, month, day_of_week')
+    print(df.head(5))
     return df
 
 
@@ -175,13 +201,16 @@ def main():
         print('city:', city)
         print('month:', month)
         print('day:', day)
+        print('*'*55)
 
-        #df = load_data(city, month, day)
+        # in case the user did not make a selection
+        if city != 'exit' and month != 'x' and day != 'Exit':
+            df = load_data(city, month, day)
 
-        #time_stats(df)
-        #station_stats(df)
-        #trip_duration_stats(df)
-        #user_stats(df)
+            #time_stats(df)
+            #station_stats(df)
+            #trip_duration_stats(df)
+            #user_stats(df)
 
         restart = input('\nWould you like to restart? Enter [Y]es or any other key to quit: ')
         if restart[0] == 'Y' or restart[0].lower() == 'y':
