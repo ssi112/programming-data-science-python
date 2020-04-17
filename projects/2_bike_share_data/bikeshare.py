@@ -6,6 +6,52 @@ CITY_DATA = { 'chicago': 'chicago.csv',
               'new york city': 'new_york_city.csv',
               'washington': 'washington.csv' }
 
+city_menu = { '1': 'Chicago',
+              '2': 'New York',
+              '3': 'Washington',
+              'x': 'Exit'}
+
+month_menu = {'0': 'All',
+              '1': 'January',
+              '2': 'February',
+              '3': 'March',
+              '4': 'April',
+              '5': 'May',
+              '6': 'June',
+              'x': 'Exit'}
+
+weekday_menu = {'0': 'All',
+                '1': 'Monday',
+                '2': 'Tuesday',
+                '3': 'Wednesday',
+                '4': 'Thursday',
+                '5': 'Friday',
+                '6': 'Saturday',
+                '7': 'Sunday',
+                'x': 'Exit'}
+
+
+def get_menu_item(menu):
+    while True:
+        print('------------')
+        print('Menu Options')
+        print('------------')
+        options = list(menu.keys())
+        options.sort()
+        for entry in options:
+            print( entry, menu[entry] )
+        selection = input("Please Select: ")
+        # in case X entered for exit
+        if selection.isupper():
+            selection = selection.lower()
+        if selection in options:
+            # print(menu[selection])
+            break
+        else:
+            print( "Unknown Option Selected!" )
+    return selection
+
+
 def get_filters():
     """
     Asks user to specify a city, month, and day to analyze.
@@ -18,43 +64,19 @@ def get_filters():
     print('Hello! Let\'s explore some US bikeshare data!')
     # TO DO: get user input for city (chicago, new york city, washington).
     # HINT: Use a while loop to handle invalid inputs
-    city_menu_item = None
-    city = ""
-    while city_menu_item != 0:
-        city_menu_item = city_menu_items()
-        if city_menu_item == 1:
-            city = 'chicago'
-            break
-        elif city_menu_item == 2:
-            city = 'new york city'
-            break
-        elif city_menu_item == 3:
-            city = 'washington'
-            break
+    print('\nPlease select the city data to explore:\n')
+    city = get_menu_item(city_menu)
 
     # TO DO: get user input for month (all, january, february, ... , june)
-    month = 1
+    print('\nPlease select the month:\n')
+    month = get_menu_item(month_menu)
 
     # TO DO: get user input for day of week (all, monday, tuesday, ... sunday)
-    day = 1
+    print('\nPlease select the day of the week:\n')
+    day = get_menu_item(weekday_menu)
 
     print('-'*40)
-    return city, month, day
-
-
-def city_menu_items():
-    print("""
-            -----------------------
-            Choose city to explore:
-            -----------------------
-            1 - Chicago
-            2 - New York
-            3 - Washington
-            0 - Quit
-
-          """)
-    city_menu_item = int(input())
-    return city_menu_item
+    return city_menu[city].lower(), month, weekday_menu[day]
 
 
 def load_data(city, month, day):
@@ -161,8 +183,10 @@ def main():
         #trip_duration_stats(df)
         #user_stats(df)
 
-        restart = input('\nWould you like to restart? Enter yes or no.\n')
-        if restart.lower() != 'yes':
+        restart = input('\nWould you like to restart? Enter [Y]es or any other key to quit: ')
+        if restart[0] == 'Y' or restart[0].lower() == 'y':
+            continue
+        else:
             break
 
 
