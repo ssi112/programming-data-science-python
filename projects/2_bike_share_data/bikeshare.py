@@ -16,17 +16,45 @@ def get_filters():
         (str) day - name of the day of week to filter by, or "all" to apply no day filter
     """
     print('Hello! Let\'s explore some US bikeshare data!')
-    # TO DO: get user input for city (chicago, new york city, washington). HINT: Use a while loop to handle invalid inputs
-
+    # TO DO: get user input for city (chicago, new york city, washington).
+    # HINT: Use a while loop to handle invalid inputs
+    city_menu_item = None
+    city = ""
+    while city_menu_item != 0:
+        city_menu_item = city_menu_items()
+        if city_menu_item == 1:
+            city = 'chicago'
+            break
+        elif city_menu_item == 2:
+            city = 'new york city'
+            break
+        elif city_menu_item == 3:
+            city = 'washington'
+            break
 
     # TO DO: get user input for month (all, january, february, ... , june)
-
+    month = 1
 
     # TO DO: get user input for day of week (all, monday, tuesday, ... sunday)
-
+    day = 1
 
     print('-'*40)
     return city, month, day
+
+
+def city_menu_items():
+    print("""
+            -----------------------
+            Choose city to explore:
+            -----------------------
+            1 - Chicago
+            2 - New York
+            3 - Washington
+            0 - Quit
+
+          """)
+    city_menu_item = int(input())
+    return city_menu_item
 
 
 def load_data(city, month, day):
@@ -121,12 +149,17 @@ def user_stats(df):
 def main():
     while True:
         city, month, day = get_filters()
-        df = load_data(city, month, day)
+        print('*'*55)
+        print('city:', city)
+        print('month:', month)
+        print('day:', day)
 
-        time_stats(df)
-        station_stats(df)
-        trip_duration_stats(df)
-        user_stats(df)
+        #df = load_data(city, month, day)
+
+        #time_stats(df)
+        #station_stats(df)
+        #trip_duration_stats(df)
+        #user_stats(df)
 
         restart = input('\nWould you like to restart? Enter yes or no.\n')
         if restart.lower() != 'yes':
