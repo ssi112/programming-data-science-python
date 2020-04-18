@@ -12,8 +12,6 @@ using the terminal to present these stats.
 Programmer : Steve S Isenberg
 Completed  :
 GitHub     : https://github.com/ssi112/programming-data-science-python
-
-
 """
 
 import time
@@ -83,8 +81,10 @@ def get_filters():
 
     Returns:
         (str) city - name of the city to analyze
-        (str) month - name of the month to filter by, or "all" to apply no month filter
-        (str) day - name of the day of week to filter by, or "all" to apply no day filter
+        (str) month - month number as string to filter on,
+                      or "0" for all months (no month filter)
+        (str) day - name of the day of week to filter by,
+                    or "all" to apply no day filter
     """
     print('Hello! Let\'s explore some US bikeshare data!')
     # TO DO: get user input for city (chicago, new york city, washington).
@@ -277,7 +277,7 @@ def main():
             df = load_data(city, month, day)
             time_stats(df)
             station_stats(df)
-            #trip_duration_stats(df)
+            trip_duration_stats(df)
             #user_stats(df)
 
         restart = input('\nWould you like to restart? Enter [Y]es or any other key to quit: ')
