@@ -10,8 +10,8 @@ Also write a script to take in raw input for an interactive experience
 using the terminal to present these stats.
 
 Programmer : Steve S Isenberg
-Completed :
-GitHub : https://github.com/ssi112/programming-data-science-python
+Completed  :
+GitHub     : https://github.com/ssi112/programming-data-science-python
 
 
 """
@@ -50,6 +50,13 @@ weekday_menu = {'0': 'All',
 
 
 def get_menu_item(menu):
+    """
+    Asks user to choose a menu item from one of the menu
+    dictionaries defined above
+
+    Returns:
+        (str) selection - key of menu item chosen
+    """
     while True:
         print('------------')
         print('Menu Options')
@@ -93,7 +100,6 @@ def get_filters():
     print('\nPlease select the day of the week:\n')
     day = get_menu_item(weekday_menu)
 
-    print('-'*75)
     return city_menu[city].lower(), month, weekday_menu[day]
 
 
@@ -109,8 +115,8 @@ def load_data(city, month, day):
         df - Pandas DataFrame containing city data filtered by month and day
     """
     df = pd.read_csv(CITY_DATA[city])
-    print('\nORIGINAL')
-    print(df.head(5))
+    #print('\nORIGINAL')
+    #print(df.head(5))
 
     # convert the Start Time column to datetime
     df['Start Time'] = pd.to_datetime(df['Start Time'])
@@ -134,8 +140,8 @@ def load_data(city, month, day):
         # filter by day of week to create the new dataframe
         df = df[df['day_of_week'] == day.title()]
 
-    print('\nCONVERTED Start Time, month, day_of_week')
-    print(df.head(5))
+    #print('\nCONVERTED Start Time, month, day_of_week')
+    #print(df.head(5))
     return df
 
 
@@ -177,16 +183,45 @@ def station_stats(df):
 
     print('\nCalculating The Most Popular Stations and Trip...\n')
     start_time = time.time()
+    #print(df.columns.values)
 
     # TO DO: display most commonly used start station
-
+    common_start_station = df['Start Station'].mode()[0]
+    print('Most common start station is {}'.format(common_start_station))
 
     # TO DO: display most commonly used end station
-
+    common_end_station = df['End Station'].mode()[0]
+    print('\nMost common end station is {}'.format(common_end_station))
 
     # TO DO: display most frequent combination of start station and end station trip
+    # size method actually counts the rows in each group
+    # also size returns a series, not a dataframe
+    start_end_station = df.groupby(['Start Station', 'End Station']).size()
+    """
+    start_end_station looks like this:
 
-    # perform a group by then call a max function on it
+    Start Station                 End Station
+    2112 W Peterson Ave           2112 W Peterson Ave              1
+                                  Broadway & Granville Ave         1
+                                  Broadway & Thorndale Ave         3
+                                  Clark St & Berwyn Ave            5
+                                  Clark St & Bryn Mawr Ave         1
+                                                                  ..
+    Woodlawn Ave & Lake Park Ave  University Ave & 57th St        21
+                                  Woodlawn Ave & 55th St           9
+                                  Woodlawn Ave & Lake Park Ave     4
+    Yates Blvd & 75th St          Stony Island Ave & 71st St       1
+                                  Yates Blvd & 75th St             3
+    """
+    most_frequent_count = start_end_station.max()
+    #print(start_end_station[start_end_station == most_frequent_count])
+
+    start_end_stations = start_end_station[start_end_station == most_frequent_count].index[0]
+
+    print('\nThe most frequent combination of start and end trip stations are:')
+    print('\tStart Station:', start_end_stations[0])
+    print('\tEnd Station:', start_end_stations[1])
+    print('\tCount of trips:', most_frequent_count)
 
     print("\nThis took %s seconds." % (time.time() - start_time))
     print('-'*40)
@@ -230,18 +265,18 @@ def user_stats(df):
 def main():
     while True:
         city, month, day = get_filters()
-        print('*'*55)
-        print('city:', city)
-        print('month:', month)
-        print('day:', day)
-        print('*'*55)
+        print('\n--------------------')
+        print('  Your Selections:')
+        print('--------------------')
+        print('City:', city.title())
+        print('Month:', month_menu[month])
+        print('Day:', day)
 
         # in case the user did not make a selection
         if city != 'exit' and month != 'x' and day != 'Exit':
             df = load_data(city, month, day)
-
             time_stats(df)
-            #station_stats(df)
+            station_stats(df)
             #trip_duration_stats(df)
             #user_stats(df)
 

@@ -5,3 +5,10 @@ readme.txt - Included as part of the project submission as stated below.
 Simple text based menu inspired, somewhat, by this source:
 https://stackoverflow.com/questions/19964603/creating-a-menu-in-python
 
+Group By Tutorials:
+https://www.tutorialspoint.com/python_pandas/python_pandas_groupby.htm
+https://towardsdatascience.com/pandas-groupby-aggregate-transform-filter-c95ba3444bbb
+
+
+
+
