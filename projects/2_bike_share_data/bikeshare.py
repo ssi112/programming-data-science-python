@@ -1,3 +1,21 @@
+"""
+bikeshare.py
+
+Use Python to explore data related to bike share systems for three major
+cities in the United States: Chicago, New York City, and Washington.
+
+Import the data and compute descriptive statistics.
+
+Also write a script to take in raw input for an interactive experience
+using the terminal to present these stats.
+
+Programmer : Steve S Isenberg
+Completed :
+GitHub : https://github.com/ssi112/programming-data-science-python
+
+
+"""
+
 import time
 import pandas as pd
 import numpy as np
@@ -128,13 +146,27 @@ def time_stats(df):
     start_time = time.time()
 
     # TO DO: display the most common month
+    common_month = df['month'].mode()[0]
+    print('Most common month is {}'.format(month_menu[str(common_month)]))
 
 
     # TO DO: display the most common day of week
+    common_weekday = df['day_of_week'].mode()[0]
+    print('Most common day of week is {}'.format(common_weekday))
 
 
     # TO DO: display the most common start hour
+    # extract hour from the Start Time col to create an start hr col
+    df['start_hour'] = df['Start Time'].dt.hour
+    common_start_hour = df['start_hour'].mode()[0]
 
+    ampm = ''
+    if common_start_hour < 12:
+        ampm = 'AM'
+    else:
+        common_start_hour -= 12
+        ampm = 'PM'
+    print('Most common start hour is {}{}'.format(common_start_hour, ampm))
 
     print("\nThis took %s seconds." % (time.time() - start_time))
     print('-'*40)
@@ -154,6 +186,7 @@ def station_stats(df):
 
     # TO DO: display most frequent combination of start station and end station trip
 
+    # perform a group by then call a max function on it
 
     print("\nThis took %s seconds." % (time.time() - start_time))
     print('-'*40)
@@ -207,7 +240,7 @@ def main():
         if city != 'exit' and month != 'x' and day != 'Exit':
             df = load_data(city, month, day)
 
-            #time_stats(df)
+            time_stats(df)
             #station_stats(df)
             #trip_duration_stats(df)
             #user_stats(df)
