@@ -17,6 +17,7 @@ GitHub     : https://github.com/ssi112/programming-data-science-python
 import time
 import pandas as pd
 import numpy as np
+import datetime
 
 CITY_DATA = { 'chicago': 'chicago.csv',
               'new york city': 'new_york_city.csv',
@@ -183,7 +184,6 @@ def station_stats(df):
 
     print('\nCalculating The Most Popular Stations and Trip...\n')
     start_time = time.time()
-    #print(df.columns.values)
 
     # TO DO: display most commonly used start station
     common_start_station = df['Start Station'].mode()[0]
@@ -234,10 +234,21 @@ def trip_duration_stats(df):
     start_time = time.time()
 
     # TO DO: display total travel time
+    #print(df.columns.values)
+    tot_travel_time = df['Trip Duration'].sum()
 
+    minutes, seconds = divmod(tot_travel_time, 60)
+    hours, minutes = divmod(minutes, 60)
+    # print('tot_travel_time:', tot_travel_time)
+    print('Total Trip Duration: {:d} hours {:02d} minutes {:02d} seconds'.format(hours, minutes, seconds))
 
     # TO DO: display mean travel time
+    avg_travel_time = df['Trip Duration'].mean()
 
+    minutes, seconds = divmod(avg_travel_time, 60)
+    hours, minutes = divmod(minutes, 60)
+    #print('avg_travel_time:', avg_travel_time)
+    print('Average Trip Duration: {:.2f} hours {:.2f} minutes {:.2f} seconds'.format(hours, minutes, seconds))
 
     print("\nThis took %s seconds." % (time.time() - start_time))
     print('-'*40)

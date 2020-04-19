@@ -9,6 +9,11 @@ Group By Tutorials:
 https://www.tutorialspoint.com/python_pandas/python_pandas_groupby.htm
 https://towardsdatascience.com/pandas-groupby-aggregate-transform-filter-c95ba3444bbb
 
+Converting seconds to hours, minuets and seconds:
+https://www.geeksforgeeks.org/python-program-to-convert-seconds-into-hours-minutes-and-seconds/
+
+
+
 
 
 
