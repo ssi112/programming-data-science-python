@@ -234,7 +234,6 @@ def trip_duration_stats(df):
     start_time = time.time()
 
     # TO DO: display total travel time
-    #print(df.columns.values)
     tot_travel_time = df['Trip Duration'].sum()
 
     minutes, seconds = divmod(tot_travel_time, 60)
@@ -260,14 +259,37 @@ def user_stats(df):
     print('\nCalculating User Stats...\n')
     start_time = time.time()
 
+    #print(df.columns.values)
     # TO DO: Display counts of user types
-
+    print('Counts by user type:\n--------------------')
+    print(df.groupby(['User Type']).size())
 
     # TO DO: Display counts of gender
+    if 'Gender' in df: #.index.values:
+        print('\nCounts by gender:\n--------------------')
+        #print(df.groupby(['Gender']).size())
 
+        g = df.groupby(['Gender']).size()
+        gender_values = g.tolist()
+        gender_names = df.groupby(['Gender']).size().index.get_level_values(0).tolist()
+        #print(g[0], g[1])
+        #print(glist)
+        print('{}: {:,}'.format(gender_names[0], gender_values[0]))
+        print('{}: {:,}'.format(gender_names[1], gender_values[1]))
+    else:
+        print("\nNo Gender Data Available!")
 
     # TO DO: Display earliest, most recent, and most common year of birth
-
+    if 'Birth Year' in df:
+        earliest_birth_year = int(df['Birth Year'].min())
+        recent_birth_year = int(df['Birth Year'].max())
+        common_birth_year = int(df['Birth Year'].mode())
+        print('\nUser birth year data:\n---------------------')
+        print('Oldest (earliest) birth year:', earliest_birth_year)
+        print('Youngest (most recent) birth year:', recent_birth_year)
+        print('Most common birth year:', common_birth_year)
+    else:
+        print("\nNo Birth Year Data Available!")
 
     print("\nThis took %s seconds." % (time.time() - start_time))
     print('-'*40)
@@ -289,7 +311,7 @@ def main():
             time_stats(df)
             station_stats(df)
             trip_duration_stats(df)
-            #user_stats(df)
+            user_stats(df)
 
         restart = input('\nWould you like to restart? Enter [Y]es or any other key to quit: ')
         if restart[0] == 'Y' or restart[0].lower() == 'y':
