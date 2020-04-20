@@ -10,8 +10,15 @@ Also write a script to take in raw input for an interactive experience
 using the terminal to present these stats.
 
 Programmer : Steve S Isenberg
-Completed  :
+Completed  : April 19, 2020
+Revised    :
 GitHub     : https://github.com/ssi112/programming-data-science-python
+
+Revision Notes:
+Raw data is displayed upon request by the user in this manner:
+Script should prompt the user if they want to see 5 lines of raw
+data, display that data if the answer is 'yes', and continue
+these prompts and displays until the user says 'no'.
 """
 
 import time
@@ -301,6 +308,33 @@ def user_stats(df):
     print('-'*40)
 
 
+def show_raw_data(df):
+    """
+    """
+    row_cnt = df.shape[0] # number of rows
+    start_row = 0 # used to paginate through the dataframe
+    page_size = 5
+    end_row = page_size
+    prompt_string = "Would you like to see some of the raw data?"
+
+    while start_row < row_cnt:
+        print()
+        print('-'*70)
+        print(prompt_string)
+        show_me = input("Enter [Y]es or any other key to quit: ")
+        if show_me[0].lower() == 'y':
+            print(">>> Showing rows {} to {} of data:".format(start_row+1, end_row))
+            if end_row > row_cnt:
+                end_row = row_cnt
+            print(df.iloc[start_row:end_row])
+            start_row = end_row
+            end_row = end_row + page_size
+            prompt_string = "Would you like to see more raw data?"
+        else:
+            break
+    print("\nReturning to main...")
+
+
 def main():
     while True:
         city, month, day = get_filters()
@@ -318,6 +352,7 @@ def main():
             station_stats(df)
             trip_duration_stats(df)
             user_stats(df)
+            show_raw_data(df)
 
         restart = input('\nWould you like to restart? Enter [Y]es or any other key to quit: ')
         if restart[0] == 'Y' or restart[0].lower() == 'y':

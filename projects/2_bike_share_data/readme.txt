@@ -11,13 +11,9 @@ https://towardsdatascience.com/pandas-groupby-aggregate-transform-filter-c95ba34
 
 Convert seconds to day, hour, minutes and seconds:
 https://www.geeksforgeeks.org/python-program-to-convert-seconds-into-hours-minutes-and-seconds/
-
 https://www.w3resource.com/python-exercises/python-basic-exercise-65.php
 
-
-
-
-
-
+Scroll through dataframe x rows at a time:
+https://www.geeksforgeeks.org/python-extracting-rows-using-pandas-iloc/
 
 
