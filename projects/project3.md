@@ -29,5 +29,10 @@ Finally, once you are finished with your work, you can merge both branches to th
 To complete this project, you will provide all the Git commands you used throughout this course in this [template](https://docs.google.com/document/d/1DoNBEQJyGHi0qAWpMpQM9lU9_VKh8ubdOY2BmKdvZcc/edit) along with a link to your repository on GitHub.
 
 ---
-Reference: Udacity's Git commit messaging [style guide](http://udacity.github.io/git-styleguide/).
+**Additional References: **
+
+* GitHub - [Maintaining a Project](https://git-scm.com/book/en/v2/GitHub-Maintaining-a-Project)
+* GitHub Guide - Mastering [Markdown](https://guides.github.com/features/mastering-markdown/)
+* Udacity's Git commit messaging [style guide](http://udacity.github.io/git-styleguide/)
+
 

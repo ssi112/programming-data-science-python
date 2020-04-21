@@ -11,7 +11,8 @@ using the terminal to present these stats.
 
 Programmer : Steve S Isenberg
 Completed  : April 19, 2020
-Revised    :
+Revised    : April 20, 2020
+Revised    : April 21, 2020
 GitHub     : https://github.com/ssi112/programming-data-science-python
 
 Revision Notes:
@@ -19,6 +20,9 @@ Raw data is displayed upon request by the user in this manner:
 Script should prompt the user if they want to see 5 lines of raw
 data, display that data if the answer is 'yes', and continue
 these prompts and displays until the user says 'no'.
+
+Update doc string for get_menu_item() and show_raw_data()
+
 """
 
 import time
@@ -59,7 +63,8 @@ def get_menu_item(menu):
     """
     Asks user to choose a menu item from one of the menu
     dictionaries defined above
-
+    Args:
+        (dictionary) menu - dict of menu items
     Returns:
         (str) selection - key of menu item chosen
     """
@@ -310,6 +315,13 @@ def user_stats(df):
 
 def show_raw_data(df):
     """
+    Provides an option for user to scroll through raw data five rows at a time.
+
+    Args:
+        (dataframe) df - Pandas DataFrame containing city data
+                         filtered by month and day, if chosen by user
+    Returns:
+        None
     """
     row_cnt = df.shape[0] # number of rows
     start_row = 0 # used to paginate through the dataframe
