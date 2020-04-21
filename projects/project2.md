@@ -29,4 +29,7 @@ You will learn about bike share use in Chicago, New York City, and Washington by
 - counts of each gender (only available for NYC and Chicago)
 - earliest, most recent, most common year of birth (only available for NYC and Chicago)
 
+**5) Explore Raw Data**
+
+Provide a prompt to allow the user to explore the raw data by paginating through the dataframe five rows at a time.
 

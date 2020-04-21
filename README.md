@@ -21,15 +21,18 @@ As the data already contains primary and foreign key entries, as opposed to havi
 
 Use SQL to explore the Sakila database related to movie rentals. As part of the project submission, write and run SQL queries and build visualizations to showcase the output of your queries in a presentation. 
 
-Check the project #1 readme [here](projects/project1.md).
+Review the project #1 readme [here](projects/project1.md).
 
 ---
 ### Project 2
 
 Use Python to explore data related to bike share systems for three major cities in the United States—Chicago, New York City, and Washington. You will write code to import the data and answer interesting questions about it by computing descriptive statistics. You will also write a script that takes in raw input to create an interactive experience in the terminal to present these statistics. 
 
-Check the project #2 readme [here](projects/project2.md).
+Review the project #2 readme [here](projects/project2.md).
 
 ---
 ### Project 3
+In this project, you'll be simulating a realistic workflow to refactor your previous BikeShare project using Git. Here's an overview of your tasks for this project.
+
+Review the project #2 readme [here](projects/project3.md).
 
