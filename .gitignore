@@ -3,7 +3,7 @@
 
 # libre office backup document
 .~lock.Git Commands Documentation.odt#
-
+*.csv
 
 # Byte-compiled / optimized / DLL files
 __pycache__/

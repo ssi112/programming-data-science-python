@@ -326,7 +326,7 @@ def show_raw_data(df):
     row_cnt = df.shape[0] # number of rows
     start_row = 0 # used to paginate through the dataframe
     page_size = 5
-    end_row = page_size
+    end_row = 0
     prompt_string = "Would you like to see some of the raw data?"
 
     while start_row < row_cnt:
@@ -334,8 +334,24 @@ def show_raw_data(df):
         print('-'*70)
         print(prompt_string)
         show_me = input("Enter [Y]es or any other key to quit: ")
+        if show_me == '': # user hit enter
+            break
+
         if show_me[0].lower() == 'y':
-            print(">>> Showing rows {} to {} of data:".format(start_row+1, end_row))
+            print("How many rows of data would you like to see?")
+            print("The default is five. The max is twenty")
+            page_size = input("Enter number of rows to display between 5 and 20: ")
+            if page_size != '': # user hit enter - no input
+                page_size = int(page_size)
+            else:
+                page_size = 5
+
+            if 5 <= page_size <= 20:
+                end_row = end_row + page_size
+            else:
+                page_size = 5
+                end_row = end_row + page_size
+            print("\n>>> Showing rows {} to {} of data:".format(start_row+1, end_row))
             if end_row > row_cnt:
                 end_row = row_cnt
             print(df.iloc[start_row:end_row])
@@ -358,7 +374,7 @@ def main():
         print('Day:', day)
 
         # in case the user did not make a selection
-        if city != 'exit' and month != 'x' and day != 'Exit':
+        if city.lower() != 'exit' and month.lower() != 'x' and day.lower() != 'exit':
             df = load_data(city, month, day)
             time_stats(df)
             station_stats(df)
@@ -367,6 +383,8 @@ def main():
             show_raw_data(df)
 
         restart = input('\nWould you like to restart? Enter [Y]es or any other key to quit: ')
+        if restart == '': # user hit enter
+            break
         if restart[0] == 'Y' or restart[0].lower() == 'y':
             continue
         else:
