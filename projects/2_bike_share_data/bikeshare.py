@@ -331,7 +331,8 @@ def show_raw_data(df):
             if 5 <= page_size <= 20:
                 end_row = end_row + page_size
             else:
-                end_row = page_size = 5
+                page_size = 5
+                end_row = end_row + page_size
             print("\n>>> Showing rows {} to {} of data:".format(start_row+1, end_row))
             if end_row > row_cnt:
                 end_row = row_cnt
