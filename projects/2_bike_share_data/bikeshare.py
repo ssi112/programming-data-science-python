@@ -12,7 +12,7 @@ using the terminal to present these stats.
 Programmer : Steve S Isenberg
 Completed  : April 19, 2020
 Revised    : April 20, 2020
-Revised    : April 21, 2020
+Revised    : April 22, 2020
 GitHub     : https://github.com/ssi112/programming-data-science-python
 
 Revision Notes:
@@ -338,7 +338,7 @@ def show_raw_data(df):
             break
 
         if show_me[0].lower() == 'y':
-            print("How many rows of data would you like to see?")
+            print("\nHow many rows of data would you like to see?")
             print("The default is five. The max is twenty")
             page_size = input("Enter number of rows to display between 5 and 20: ")
             if page_size != '': # user hit enter - no input
@@ -356,7 +356,6 @@ def show_raw_data(df):
                 end_row = row_cnt
             print(df.iloc[start_row:end_row])
             start_row = end_row
-            end_row = end_row + page_size
             prompt_string = "Would you like to see more raw data?"
         else:
             break
